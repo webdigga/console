@@ -12,7 +12,7 @@
 			<input type="submit" value="Log in"/>			
 			<div class="error-message">			
 			<?				
-			if($_GET['error']==1) {	
+			if(isset($_GET['error']) && $_GET['error']==1) {	
 				echo "Your username or password is incorrect, please try again";	
 			}			
 			?>			

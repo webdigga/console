@@ -2,6 +2,8 @@
 
 include('includes.php');
 
+if (isset($companyid)) {
+
 // get total accidents
 $accidents = mysql_query("SELECT * FROM accident WHERE companyid = '".$companyid."' ");
 $num_rows = mysql_num_rows($accidents);
@@ -19,6 +21,8 @@ $lastYearDate = date($lastYear."-m-d H:i:s");
 
 // get number of accidents by date
 $dateresult = mysql_query("SELECT acc.date, count(acc.date) as total FROM accident acc WHERE acc.companyid = '".$companyid."' AND acc.date BETWEEN '".$lastYearDate."' AND '".$currentDate."' GROUP BY CAST(acc.date AS DATE) ORDER BY acc.date");
+
+}
 
 
 if(isset($_SESSION["username"])) {
