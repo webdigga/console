@@ -1,6 +1,6 @@
 <?
 
-require_once($_SERVER['DOCUMENT_ROOT'].'/includes.php');
+include('includes.php');
 
 // get total accidents
 $accidents = mysql_query("SELECT * FROM accident WHERE companyid = '".$companyid."' ");
