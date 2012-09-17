@@ -1,0 +1,40 @@
+/* city sprint specific css */
+
+/* primary - #0082BB, light blue */
+/* secondary - #003A6D, dark blue */
+/* tertiary - #7E94AC, silver blue */
+
+#main {
+ background: #fff;
+}
+nav ul li a.selected {
+ background: #fff;
+ color:#000 !important;
+}
+nav ul li:hover, nav ul li a:hover  {
+ background: #000;
+ color:#fff !important;
+}
+nav ul li a, nav ul li a:visited {
+ color:#000;
+}
+#container header h1 {
+ background: url('/img/logos/3.png') 100% 0 no-repeat;
+ height: 65px;
+ margin: 35px 0 0 0;
+}
+body {
+ background-color:#333;
+}
+#welcome-container, #welcome-container a, header {
+ color:#fff;
+}
+footer {
+ color:#fff;
+}
+.images li:hover {
+ background:#0082BB;
+}
+.fa-date {
+ background-color: #7E94AC !important;
+}
