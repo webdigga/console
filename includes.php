@@ -1,7 +1,7 @@
 <?
 
-include('/head.html');
-include('/admin.php');
+include('head.html');
+include('admin.php');
 
 if(isset($_SESSION["username"])) {
 	$sessuser = $_SESSION['username'];
