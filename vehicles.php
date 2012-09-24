@@ -12,9 +12,9 @@ if(isset($_SESSION["username"])) {
 	</header>
 	<div id="main" role="main" class="vehicles">
 		<h2>Vehicles <span class="num-rows">(<? echo $num_rows; ?> records)</span></h2>
-		<div class="add-container">
-			<span class="add-record-label"><a href="add-vehicle.php?nav=vehicles">Add new vehicle</a></span>
+		<div class="add-container">			
 			<a href="add-vehicle.php?nav=vehicles" class="add-record"><img src="img/add.png" width="16px" height="16px" /></a>
+			<span class="add-record-label"><a href="add-vehicle.php?nav=vehicles">Add new vehicle</a></span>
 		</div>
 		<table id="vehicles-table" caption="Vehicles Table" summary="This is a list of all vehicles at the company" class="tablesorter">				
 		</table>

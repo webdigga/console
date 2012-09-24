@@ -2,38 +2,46 @@
 
 /* primary - #FC0, yellow */
 /* secondary - #c40f00, red */
+/* tertiary - #F2F2ED, light grey */
 
+body {
+	background:#F2F2ED;
+}
 #main {
- background: #fff;
+	background: #fff;
+	border-left: 1px solid #FC0;
+	border-right: 1px solid #FC0;
+}
+nav ul {
+	border-left: 1px solid #FC0;
 }
 nav ul li a.selected {
- background: #fff;
- color:#000 !important;
+	background: #fff;
+	color:#000 !important;
 }
 nav ul li:hover, nav ul li a:hover  {
- background: #000;
- color:#fff !important;
+	background: #000;
+	color:#fff !important;
 }
 nav ul li a, nav ul li a:visited {
- color:#000;
+	color:#000;
 }
 #container header h1 {
- background: url('/img/logos/2.png') 100% 0 no-repeat;
- height: 65px;
- margin: 35px 0 0 0;
+	background: url('/img/logos/2.png') 99% 0 no-repeat;
 }
-body {
- background: #FC0 !important;
+header, #welcome-container {
+	background: #FC0;
 }
 #welcome-container, #welcome-container a, header {
- color:#000;
+	color:#000;
 }
 footer {
- color:#000;
+	color:#000;
+	background:#FC0;
 }
 .images li:hover {
- background:#FC0;
+	background:#FC0;
 }
 .fa-date {
- background-color: #c40f00 !important;
+	background-color: #c40f00 !important;
 }

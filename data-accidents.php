@@ -43,17 +43,13 @@ if( $driver_sql === "" && $vehicle_sql !== "") {
 }
 
 // get accident details
-$accidents = mysql_query("SELECT SQL_CALC_FOUND_ROWS *, tp.id as tpid, dr.name as drivername, tp.name as tpname, acc.vehiclelicenseplate, acc.thirdpartylicenseplate, acc.location, acc.description, acc.companyid, acc.driverid, acc.date, acc.id, fa.accidentid as faaccid, fa.statusid as statusid, fa.id as faid FROM accident acc INNER JOIN driver dr ON acc.driverid = dr.id INNER JOIN thirdparty tp ON acc.thirdpartyid = tp.id INNER JOIN furtheraction fa ON fa.accidentid = acc.id  WHERE acc.companyid = $companyid $print_sql ORDER BY acc.id DESC $limit_sql");
+$accidents = mysql_query("SELECT SQL_CALC_FOUND_ROWS *, tp.id as tpid, dr.name as drivername, tp.name as tpname, acc.vehiclelicenseplate, acc.thirdpartylicenseplate, acc.location, acc.description, acc.companyid, acc.driverid, acc.date, acc.id, fa.accidentid as faaccid, fa.statusid as statusid, fa.id as faid FROM accident acc INNER JOIN driver dr ON acc.driverid = dr.id INNER JOIN thirdparty tp ON acc.thirdpartyid = tp.id LEFT JOIN furtheraction fa ON fa.accidentid = acc.id  WHERE acc.companyid = $companyid $print_sql ORDER BY acc.id DESC $limit_sql");
 
 $accidentsCount = mysql_query("SELECT SQL_CALC_FOUND_ROWS *, tp.id as tpid, dr.name as drivername, tp.name as tpname, acc.vehiclelicenseplate, acc.thirdpartylicenseplate, acc.location, acc.description, acc.companyid, acc.driverid, acc.date, acc.id FROM accident acc INNER JOIN driver dr ON acc.driverid = dr.id INNER JOIN thirdparty tp ON acc.thirdpartyid = tp.id WHERE acc.companyid = $companyid $print_sql ORDER BY acc.id");
 
 $total = mysql_num_rows($accidentsCount);
 
-
-
-
-
-echo "<thead class=\"$total\"><tr><th scope=\"col\">Id</th><th class=\"{sorter: 'date'}\">Date</th><th scope=\"col\">Images</th><th scope=\"col\">Driver Name</th><th scope=\"col\">TP Name</th><th scope=\"col\">License Plate</th><th scope=\"col\">TP License Plate</th><th scope=\"col\">Location</th><th scope=\"col\">Description</th><th scope=\"col\">Further Action</th></tr></thead><tbody>";
+echo "<thead class=\"$total $print_sql\"><tr><th scope=\"col\">Id</th><th class=\"{sorter: 'date'}\">Date</th><th scope=\"col\">Images</th><th scope=\"col\">Driver Name</th><th scope=\"col\">TP Name</th><th scope=\"col\">License Plate</th><th scope=\"col\">TP License Plate</th><th scope=\"col\">Location</th><th scope=\"col\">Description</th><th scope=\"col\">Further Action</th></tr></thead><tbody>";
 
 while($accidentrow = mysql_fetch_array($accidents)) {			
 	$dateTime =  new DateTime($accidentrow['date']);
@@ -63,15 +59,13 @@ while($accidentrow = mysql_fetch_array($accidents)) {
 	switch ($accidentrow['statusid']) {		
 		case "1":
 			$entryCountCheckSql = mysql_query("SELECT * FROM actionentry WHERE '".$accidentrow['faid']."' = furtheractionid");
-			$count = mysql_num_rows($entryCountCheckSql);
-			
+			$count = mysql_num_rows($entryCountCheckSql);			
 			if($count===0) {
 				$faImg = "<img src=\"/img/note_add.png\" />";
 			} else {
 				$faImg = "<img src=\"/img/exclamation.png\" />";
 			}
-		break;
-		
+		break;		
 		case "2":		
 			$faImg = "<img src=\"/img/lock.png\" />";
 		break;

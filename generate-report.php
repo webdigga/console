@@ -91,7 +91,7 @@ while($accidentrow = mysql_fetch_array($accidents)) {
 	$dateTime =  new DateTime($accidentrow['date']);	
 	$dateTimeFormatted = date_format($dateTime, 'M j, Y h:i A');
 	
-	$html.= "<tr><td>".$dateTimeFormatted."</td><td width=\"60px\" class=\"camera\"><a href=\"/images.php?nav=accidents&accidentid=".$accidentrow['id']."\"><img src=\"/img/camera_go.png\" /></a></td><td>". $accidentrow['drivername'] ."</td><td><a href=\"/third-parties.php?nav=accidents&tpid=".$accidentrow['tpid']."\">". $accidentrow['tpname'] ."</a></td><td>". $accidentrow['vehiclelicenseplate'] ."</td><td>". $accidentrow['thirdpartylicenseplate'] ."</td><td width=\"65px\" class=\"map\"><a href=\"/map.php?nav=accidents&longlat=".$accidentrow['location']."\"><img src=\"/img/map_magnify.png\" /></a></td></tr>";
+	$html.= "<tr><td>".$dateTimeFormatted."</td><td width=\"60px\" class=\"camera\"><a href=\"images.php?nav=accidents&accidentid=".$accidentrow['id']."\"><img src=\"/img/camera_go.png\" /></a></td><td>". $accidentrow['drivername'] ."</td><td><a href=\"third-parties.php?nav=accidents&tpid=".$accidentrow['tpid']."\">". $accidentrow['tpname'] ."</a></td><td>". $accidentrow['vehiclelicenseplate'] ."</td><td>". $accidentrow['thirdpartylicenseplate'] ."</td><td width=\"65px\" class=\"map\"><a href=\"map.php?nav=accidents&longlat=".$accidentrow['location']."\"><img src=\"/img/map_magnify.png\" /></a></td></tr>";
 }
 
 // output the HTML content

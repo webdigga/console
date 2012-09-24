@@ -24,7 +24,6 @@ $dateresult = mysql_query("SELECT acc.date, count(acc.date) as total FROM accide
 
 }
 
-
 if(isset($_SESSION["username"])) {
 
 ?>
@@ -35,6 +34,7 @@ if(isset($_SESSION["username"])) {
 		<? include('nav.php'); ?>
 	</header>
 	<div id="main" role="main" class="stats">
+		<div class="date-warning">**Please select a from date</div>
 		<h2>Stats
 			<span class="report">
 				<label for="dateRange">Generate Report &nbsp;&nbsp;|</label>  

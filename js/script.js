@@ -1,15 +1,25 @@
 /* Author: David White */
 $(document).ready(function() {
+
+
+  // when the report button is clicked, make sure we have a from date
+	$('form[name="dateRange"] input[type="image"]').click(function(){
+		if ($('#datepickerFrom').val()==='') {
+			$('.date-warning').show();
+			return false;
+		}
+	});
+	
+
 	
 	// filter	
 	$('.accidents .filter').click(function() {		
 		/* accident filter */	
-		if ($('#filter').is(":hidden")) {			
+		if ($('#filter').is(":hidden")) {
 			$('.not-selected').hide();
 			$('#filter, #filter-arrow').slideDown("slow");	
 		}
 	});	
-
 	var vehArray=[], driArray=[];
 	$('.filter-submit .submit').live('click', function() {
 		//show the loading bar
@@ -29,11 +39,9 @@ $(document).ready(function() {
 			}			
 		});
 		refPage = 1;
-		$("#accidents-table").load("data-accidents.php?driver=" + driArray + "&vehicle=" + vehArray, hideLoader);	
-		
-	});
-	
-	$('.filter-submit .cancel').live('click', function(){
+		$("#accidents-table").load("data-accidents.php?driver=" + driArray + "&vehicle=" + vehArray, hideLoader);			
+	});	
+	$('.filter-submit .close').live('click', function(){
 		$('#filter, #filter-arrow').slideUp("slow");		
 	});
 	
@@ -44,24 +52,18 @@ $(document).ready(function() {
 	
 	// raphael charts
 	$(function() {
-		var values = [],
-			labels = [];
+		var values = [], labels = [];
 		$("#driver-stats tbody tr").each(function () {
 			values.push(parseInt($("td:eq(1)", this).text(), 10));
 			labels.push($("td:eq(0)", this).text()+" "+$("td:eq(1)", this).text());
 		});
-		
-		Raphael("driver-stats-holder", 400, 325).pieChart(175, 175, 100, values, labels, "#fff");
-		
-		var values = [],
-			labels = [];
-		
+		Raphael("driver-stats-holder", 460, 480).pieChart(230, 150, 100, values, labels, "#fff");		
+		var values = [], labels = [];		
 		$("#weather-stats tbody tr").each(function () {
 			values.push(parseInt($("td:eq(1)", this).text(), 10));
 			labels.push($("td:eq(0)", this).text()+" "+$("td:eq(1)", this).text());
-		});
-		
-		Raphael("weather-stats-holder", 520, 325).pieChart(175, 175, 100, values, labels, "#fff");
+		});		
+		Raphael("weather-stats-holder", 460, 480).pieChart(230, 150, 100, values, labels, "#fff");
 	});	
 	
 	// inline editing vehicles	
@@ -94,9 +96,7 @@ $(document).ready(function() {
 		$(this).attr('src','/img/disk.png');
 		$(this).parent().append('<img class="cancel" src="/img/cancel.png" title="cancel" alt="cancel">');
 		$(this).attr('class','save');	
-	});
-	
-	
+	});		
 	$('#vehicles-table td img.save').live("click", function() {
 		// when click save, data values are sent to a php page via ajax and sql is updated for that record and save button becomes edit again and text changes back		
 		//get the accident id
@@ -149,24 +149,7 @@ $(document).ready(function() {
 		$(this).attr('src','/img/disk.png');
 		$(this).parent().append('<img class="cancel" src="/img/cancel.png" title="cancel" alt="cancel">');
 		$(this).attr('class','save');	
-	});
-	
-	$( "#mot-date" ).datepicker({
-		showOn: "button",
-		buttonImage: "/img/calendar_add.png",
-		buttonImageOnly: true,
-		dateFormat: "yy-mm-dd"
-	});
-	$( "#service-date" ).datepicker({
-		showOn: "button",
-		buttonImage: "/img/calendar_add.png",
-		buttonImageOnly: true,
-		dateFormat: "yy-mm-dd"
-	});
-	$( "#datepickerFrom" ).datepicker();
-	$( "#datepickerTo" ).datepicker();
-	$( "#note-date" ).datepicker();
-	
+	});	
 	$('#drivers-table td img.save').live("click", function() {
 		// when click save, data values are sent to a php page via ajax and sql is updated for that record and save button becomes edit again and text changes back		
 		//get the accident id
@@ -191,7 +174,7 @@ $(document).ready(function() {
 		});
 		$(this).siblings('.cancel').remove();
 	});	
-	
+	/* cancel puts things back to normal */	
 	$('#main .cancel').live("click", function() {		
 		$(this).siblings('.save').attr('class','edit');
 		$(this).siblings().attr('src','/img/folder_edit.png');
@@ -205,6 +188,23 @@ $(document).ready(function() {
 		});
 		$(this).remove();
 	});
+	
+	/* date pickers */
+	$( "#mot-date" ).datepicker({
+		showOn: "button",
+		buttonImage: "/img/calendar_add.png",
+		buttonImageOnly: true,
+		dateFormat: "yy-mm-dd"
+	});
+	$( "#service-date" ).datepicker({
+		showOn: "button",
+		buttonImage: "/img/calendar_add.png",
+		buttonImageOnly: true,
+		dateFormat: "yy-mm-dd"
+	});
+	$( "#datepickerFrom" ).datepicker();
+	$( "#datepickerTo" ).datepicker();
+	$( "#note-date" ).datepicker();
 	
 	// pagination
 	//show loading bar
@@ -226,8 +226,7 @@ $(document).ready(function() {
 			content+="<li class='"+i+"'>"+i+"</li>";
 		}
 		content+="</ul></div>";
-		$("#pages").replaceWith(content);
-		
+		$("#pages").replaceWith(content);		
 		$('#pages li:eq('+(refPage-1)+')').css({'background-color':'#c8c8c8','color':'#fff'});
 		initPagination();
 	}
@@ -238,8 +237,7 @@ $(document).ready(function() {
 		// initialise driver table sort
 		$("#drivers-table").tablesorter();
 		var numRows = $('#drivers-table thead').attr('class');
-		$('.num-rows').text("(" + numRows + " records)");
-				
+		$('.num-rows').text("(" + numRows + " records)");				
 		var ipp =10;//items per page
 		var totalpages = Math.ceil(numRows/ipp);
 		var content = "<div id='pages'><ul class='pages'>";
@@ -247,21 +245,18 @@ $(document).ready(function() {
 			content+="<li class='"+i+"'>"+i+"</li>";
 		}
 		content+="</ul></div>";
-		$("#pages").replaceWith(content);
-		
+		$("#pages").replaceWith(content);		
 		$('#pages li:eq('+(refPage-1)+')').css({'background-color':'#c8c8c8','color':'#fff'});
 		initDriverPagination();
 	}
 
 	// hide vehicles loader	
-	function hideVehicleLoader() {
-		
+	function hideVehicleLoader() {		
 		$('.search-background').fadeOut(200);		
 		// initialise vehicle table sort
 		$("#vehicles-table").tablesorter();
 		var numRows = $('#vehicles-table thead').attr('class');
-		$('.num-rows').text("(" + numRows + " records)");
-				
+		$('.num-rows').text("(" + numRows + " records)");				
 		var ipp =10;//items per page
 		var totalpages = Math.ceil(numRows/ipp);
 		var content = "<div id='pages'><ul class='pages'>";
@@ -269,8 +264,7 @@ $(document).ready(function() {
 			content+="<li class='"+i+"'>"+i+"</li>";
 		}
 		content+="</ul></div>";
-		$("#pages").replaceWith(content);
-		
+		$("#pages").replaceWith(content);		
 		$('#pages li:eq('+(refPage-1)+')').css({'background-color':'#c8c8c8','color':'#fff'});
 		initVehiclePagination();
 	}
@@ -308,10 +302,8 @@ $(document).ready(function() {
 			$(this).css({'background-color' : '#C8C8C8', 'color' : '#fff'});                
 			$("#vehicles-table").load("data-vehicles.php?page=" + ref.attr('class'), hideVehicleLoader);		
 		});
-	}	
-	
-	showLoader();
-	
+	}		
+	showLoader();	
 	$("#accidents-table").load("data-accidents.php?page=1",hideLoader);
 	$("#drivers-table").load("data-drivers.php?page=1",hideDriverLoader);
 	$("#vehicles-table").load("data-vehicles.php?page=1",hideVehicleLoader);
@@ -322,38 +314,29 @@ $(document).ready(function() {
 	$("#weather-stats").tablesorter();
 	
 	// event for when a further action add is clicked
-	$('.further-action .add-note a').click(function(){
-	
+	$('.further-action .add-note a').click(function(){	
 		var textarea = $('.fa-notes textarea').val();
-		var postdate = $('.fa-notes #note-date').val();					
-		
+		var postdate = $('.fa-notes #note-date').val();	
 		// grab the accident id
 		var accidentid = $('#fa-accidentid').text();
 		// check that both note and date have val
 		if (textarea !="" && postdate !="") {			
-			$('.add-note .error').hide();
-			
+			$('.add-note .error').hide();			
 			// get the date then get it in the correct format
 			postdate = Date.parseExact(postdate, ["M/d/yyyy", "MMMM d, yyyy"]);
-			postdate = postdate.toString('MMM d, yyyy');
-			
-			// submit takes the data and passes it (ajax) to add-note page where it will enter it in db and pass the data back
-			
-			
+			postdate = postdate.toString('MMM d, yyyy');			
+			// submit takes the data and passes it (ajax) to add-note page where it will enter it in db and pass the data back			
 			$.ajax({
 				type: "POST",
 				url: "/add-note.php",
 				data: { note: textarea, notedate: postdate, accidentid: accidentid }
 			}).done(function( data ) {
 				//alert( "Data Saved: " + data );
-				$('<div class="add-note-controls ' + data + '"><div class="edit"><img src="/img/comment_edit.png" alt="edit" title="edit" /></div><div class="delete"><img src="/img/cross.png" alt="delete" title="delete" /></div><div class="fa-date">' + postdate + '</div></div><div class="fa-container"><textarea disabled="disabled" class="fa-notes tx tx".$count."">' + textarea + '</textarea></div>').insertAfter('.fa-container.add').hide().slideDown('slow');				
-					
+				$('<div class="add-note-controls ' + data + '"><div class="edit"><img src="/img/comment_edit.png" alt="edit" title="edit" /></div><div class="delete"><img src="/img/cross.png" alt="delete" title="delete" /></div><div class="fa-date">' + postdate + '</div></div><div class="fa-container"><textarea disabled="disabled" class="fa-notes tx tx".$count."">' + textarea + '</textarea></div>').insertAfter('.fa-container.add').hide().slideDown('slow');
 				$('.fa-notes textarea').val('');
 				$('.fa-notes #note-date').val('');
-				$('#no-notes').hide();
-				
-			});
-			
+				$('#no-notes').hide();				
+			});			
 		} else {
 			$('.add-note .error').show();
 		}	
@@ -382,11 +365,8 @@ $(document).ready(function() {
 	$('.inline-add-note img').live("click", function() {
 		// on click of save button, send data to edit-note.php
 		var newNote = $(this).parent().parent().next().children().val();		
-		var noteid = $(this).parent().parent().attr('class').split(" ");	
-		
-		$.post("/edit-note.php", {note: newNote, noteid: noteid[1]}, function(data){			
-			//alert(data);
-		});
+		var noteid = $(this).parent().parent().attr('class').split(" ");		
+		$.post("/edit-note.php", {note: newNote, noteid: noteid[1]}, function(data){});
 		// on success change save button back to edit and disable the textarea
 		$(this).parent().parent().next().children().attr('disabled','disabled');
 		$(this).parent().attr('class','edit');

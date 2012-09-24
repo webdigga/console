@@ -18,6 +18,7 @@ if(isset($_SESSION["username"])) {
 		<? include('nav.php'); ?>
 	</header>
 	<div id="main" role="main" class="accidents">
+		<div class="date-warning">**Please select a from date</div>
 		<h2>Accidents 
 			<span class="num-rows"></span>
 			<span class="report">
@@ -31,9 +32,9 @@ if(isset($_SESSION["username"])) {
 				</form>
 			</span>
 		</h2>
-		<div class="add-container">
-			<span class="add-record-label"><a href="#" class="filter" onclick="return false">Filter</a></span>
+		<div class="add-container">			
 			<a href="#" onclick="return false" class="add-record filter"><img src="/img/page_find.png" width="16px" height="16px" alt="filter" title="filter" /></a>
+			<span class="add-record-label"><a href="#" class="filter" onclick="return false">Filter</a></span>
 			<div id="filter-arrow"></div>
 			<div id="filter">
 				<?
@@ -47,7 +48,7 @@ if(isset($_SESSION["username"])) {
 				
 				<div class="filter-submit">
 					<div class="submit">Submit</div>
-					<div class="cancel">Close</div>
+					<div class="close">Close</div>
 					<div class="not-selected" style="display: none;">* You have not selected a filter</div>
 				</div>
 			</div>
