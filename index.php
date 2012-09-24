@@ -38,12 +38,13 @@ if(isset($_SESSION["username"])) {
 		<h2>Stats
 			<span class="report">
 				<label for="dateRange">Generate Report &nbsp;&nbsp;|</label>  
-				<form action="generate-report.php" name="dateRange" method="POST">
+				<form name="dateRange" action="" method="POST" id="report-form">
 					<label for="dateFrom">From: </label>
 					<input type="text" id="datepickerFrom" name="dateFrom" /> 
 					<label for="dateTo">To: </label>
 					<input type="text" id="datepickerTo" name="dateTo" />
-					<input type="image" src="/img/report.png" />
+					<input type="image" value="pdf" src="/img/page_white_acrobat.png" />
+					<input type="image" class="csv" src="/img/page_white_excel.png" />
 				</form>
 			</span>		
 		</h2>

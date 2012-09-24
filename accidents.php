@@ -28,7 +28,8 @@ if(isset($_SESSION["username"])) {
 					<input type="text" id="datepickerFrom" name="dateFrom" /> 
 					<label for="dateTo">To: </label>
 					<input type="text" id="datepickerTo" name="dateTo" />
-					<input type="image" src="/img/report.png" />
+					<input type="image" src="/img/page_white_acrobat.png" />
+					<input type="image" formaction="csv.php" src="/img/page_white_excel.png" />
 				</form>
 			</span>
 		</h2>

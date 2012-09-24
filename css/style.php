@@ -724,7 +724,7 @@ ul.pages li.active {
 	font-size: 0.6em;
 	font-style: italic;
 	padding: 4px;
-	width: 610px;
+	width: 623px;
 }
 .stats .report input[type="image"], .accidents .report input[type="image"] {
 	padding-top:3px;

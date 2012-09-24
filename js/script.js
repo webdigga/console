@@ -7,6 +7,16 @@ $(document).ready(function() {
 		if ($('#datepickerFrom').val()==='') {
 			$('.date-warning').show();
 			return false;
+		} else {
+		// submit the form
+		var action;
+		var classVal = $(this).val();
+		if (classVal === 'pdf') {
+			action = 'generate-report.php';
+		} else {
+			action = 'csv.php';
+		}		
+		$("#report-form").attr("action", action);
 		}
 	});
 	
