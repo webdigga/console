@@ -631,7 +631,6 @@ button.regular, .buttons a.regular{
 
 /* map */
 #main.map {
-	width:100%;
 	height:472px;
 }
 #map_canvas { 

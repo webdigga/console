@@ -89,8 +89,7 @@ $html = '';
 // create some HTML content
 while($accidentrow = mysql_fetch_array($accidents)) {			
 	$dateTime =  new DateTime($accidentrow['date']);	
-	$dateTimeFormatted = date_format($dateTime, 'M j, Y h:i A');
-	
+	$dateTimeFormatted = date_format($dateTime, 'M j, Y h:i A');	
 	$html.= "<tr><td>".$dateTimeFormatted."</td><td width=\"60px\" class=\"camera\"><a href=\"http://console.app-cident.com/images.php?nav=accidents&accidentid=".$accidentrow['id']."\"><img src=\"/img/camera_go.png\" /></a></td><td>". $accidentrow['drivername'] ."</td><td><a href=\"http://console.app-cident.com/third-parties.php?nav=accidents&tpid=".$accidentrow['tpid']."\">". $accidentrow['tpname'] ."</a></td><td>". $accidentrow['vehiclelicenseplate'] ."</td><td>". $accidentrow['thirdpartylicenseplate'] ."</td><td width=\"65px\" class=\"map\"><a href=\"http://console.app-cident.com/map.php?nav=accidents&longlat=".$accidentrow['location']."\"><img src=\"/img/map_magnify.png\" /></a></td></tr>";
 }
 
