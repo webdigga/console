@@ -3,6 +3,6 @@
 	<div id="tweet">
 		<img src="/img/ajax-loader.gif" alt="ajax loader" class="loader" />
 		<p>Please wait while my tweets load</p>
-		<p><a href="http://twitter.com/appcident">If you can't wait - check out what we've been tweeting</a></p>
+		<p><a href="http://twitter.com/app_cident">If you can't wait - check out what we've been tweeting</a></p>
 	</div>					
 </div>
