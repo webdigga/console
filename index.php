@@ -33,8 +33,7 @@ if(isset($_SESSION["username"])) {
 		<h1>App-cident Console</h1>
 		<? include('nav.php'); ?>
 	</header>
-	<div id="main" role="main" class="stats">
-		<? include 'twitter.php';?>
+	<div id="main" role="main" class="stats">		
 		<div class="date-warning">**Please select a from date</div>
 		<h2>Stats
 			<span class="report">
@@ -106,8 +105,9 @@ if(isset($_SESSION["username"])) {
 				?>
 			</table>
 			<div id="holder"></div>
-		</div>		
-	</div>
+		</div>	
+		<? include 'twitter.php';?>
+	</div>	
 </div>	
 
 <?
