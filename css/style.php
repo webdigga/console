@@ -125,8 +125,8 @@ nav ul li a {
 	overflow:hidden;
 }
 #container header h1 { 
-	height: 65px;
-	margin: 15px 0 0 0;
+	height: 50px;
+	margin: 0 0 0 0;
 	padding: 0 10px 0 10px;
 }
 #welcome-container {
@@ -270,7 +270,7 @@ nav ul li a {
 table.tablesorter {
 	font-family: Helvetica, Arial, sans-serif;
 	background-color: #CDCDCD;
-	margin:10px 0pt 15px;
+	margin:10px 0px 0px;
 	font-size: 8pt;
 	width: 100%;
 	text-align: left;
@@ -519,11 +519,14 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
 }
 
 /* stats styles */
+.stats h2 {
+	margin-bottom: 10px;
+}
 .stats-holder {
 	float:left;
 	width:460px;
 	position:relative;
-	height:480px;
+	height:448px;
 }
 .stats-holder svg {
 	position:absolute;
@@ -536,8 +539,41 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
 #driver-stats-holder, #weather-stats-holder {
 	text-align:center; 
 }
-.date-data #holder {
+#holder {
 	text-align:center;
+}
+
+/* twitter */
+#tweet-container {
+	background: #F2F2F2;
+	border: 1px solid #CCC;
+	padding:10px;
+	margin-top:10px;
+}
+#tweet {
+	font-size: 0.75em;
+	position: relative;
+}
+#tweet img {
+	width:20px;
+	height:20px;
+}
+#tweet-container h3 {
+	margin: 0;
+	background: url('/img/twitter-bird-light-bgs.png') no-repeat 23% 0;
+}
+#tweet-container ul {
+	padding:0;
+}
+#tweet-container ul li {
+	margin-bottom:2px;
+	list-style:none;
+}
+#tweet-container .loader {
+	position:absolute;
+	left:50%;
+	top:50%
+	
 }
 
 /* buttons */

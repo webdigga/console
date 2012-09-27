@@ -34,6 +34,7 @@ if(isset($_SESSION["username"])) {
 		<? include('nav.php'); ?>
 	</header>
 	<div id="main" role="main" class="stats">
+		<? include 'twitter.php';?>
 		<div class="date-warning">**Please select a from date</div>
 		<h2>Stats
 			<span class="report">
@@ -92,7 +93,7 @@ if(isset($_SESSION["username"])) {
 				</tbody>
 			</table>
 			<div id="weather-stats-holder"></div>		
-		</div>	
+		</div>			
 		<div class="date-data">
 			<table id="date-data">				
 				<?
@@ -105,7 +106,7 @@ if(isset($_SESSION["username"])) {
 				?>
 			</table>
 			<div id="holder"></div>
-		</div>	
+		</div>		
 	</div>
 </div>	
 

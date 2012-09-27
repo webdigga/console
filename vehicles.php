@@ -21,8 +21,9 @@ if(isset($_SESSION["username"])) {
 		<div id="pages">
 			<ul class='pages'></ul>
 		</div>
-		<div class="search-background"><?=$num_rows;?><label><img src="/img/load.gif" alt="" />
+		<div class="search-background"><?=$num_rows;?><label><img src="/img/load.gif" alt="" />		
 	</div>
+	<? include 'twitter.php';?>
 </div>
 
 <?

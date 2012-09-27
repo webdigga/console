@@ -49,7 +49,7 @@ $accidentsCount = mysql_query("SELECT SQL_CALC_FOUND_ROWS *, tp.id as tpid, dr.n
 
 $total = mysql_num_rows($accidentsCount);
 
-echo "<thead class=\"$total $print_sql\"><tr><th scope=\"col\">Id</th><th class=\"{sorter: 'date'}\">Date</th><th scope=\"col\">Images</th><th scope=\"col\">Driver Name</th><th scope=\"col\">TP Name</th><th scope=\"col\">License Plate</th><th scope=\"col\">TP License Plate</th><th scope=\"col\">Location</th><th scope=\"col\">Description</th><th scope=\"col\">Further Action</th></tr></thead><tbody>";
+echo "<thead class=\"$total\"><tr><th scope=\"col\">Id</th><th class=\"{sorter: 'date'}\">Date</th><th scope=\"col\">Images</th><th scope=\"col\">Driver Name</th><th scope=\"col\">TP Name</th><th scope=\"col\">License Plate</th><th scope=\"col\">TP License Plate</th><th scope=\"col\">Location</th><th scope=\"col\">Description</th><th scope=\"col\">Further Action</th></tr></thead><tbody>";
 
 while($accidentrow = mysql_fetch_array($accidents)) {			
 	$dateTime =  new DateTime($accidentrow['date']);

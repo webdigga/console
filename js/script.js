@@ -1,6 +1,15 @@
 /* Author: David White */
 $(document).ready(function() {
 
+	/* tweets */	
+	getTwitters('tweet', { 
+		id: 'highwaysagency', 
+		count: 3, 
+		enableLinks: true, 
+		ignoreReplies: true, 
+		clearContents: true,
+		template: '<img height="50" width="50" src="%user_profile_image_url%" alt="twitter profile image" /> <a href="http://twitter.com/%user_screen_name%">%user_name%</a> said: "%text%" <a href="http://twitter.com/%user_screen_name%/statuses/%id%">%time%</a>'
+	});
 
   // when the report button is clicked, make sure we have a from date
 	$('form[name="dateRange"] input[type="image"]').click(function(){
@@ -19,8 +28,6 @@ $(document).ready(function() {
 		$("#report-form").attr("action", action);
 		}
 	});
-	
-
 	
 	// filter	
 	$('.accidents .filter').click(function() {		

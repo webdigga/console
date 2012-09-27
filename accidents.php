@@ -60,7 +60,8 @@ if(isset($_SESSION["username"])) {
 			<ul class='pages'></ul>
 		</div>
 		<div class="search-background"><label><img src="/img/load.gif" alt="" /></label></div>
-	</div>
+		<? include 'twitter.php';?>
+	</div>	
 </div>
 
 <?
