@@ -27,7 +27,8 @@ nav ul li a, nav ul li a:visited {
 	color:#000;
 }
 #container header h1 {
-	background: url('/img/logos/3.png') 99% 0 no-repeat;
+	background: url('/img/logos/3.png') 99% 100% no-repeat;
+	height: 75px !important;
 }
 header, #welcome-container {
 	background: #333;
